@@ -1,0 +1,51 @@
+# foo:
+#   name: art
+#   age: 26
+#   dogs:
+#     - beagie
+#     - banana
+# {"foo": {"name"
+#  "art", "age": 26, "dogs": ["beagie", "banana"]}}
+
+# name: Test workflows
+# run-name: Triggering test by ${{ github.actor }}
+
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main, develop]
+
+# jobs:
+#   test:
+#     name: Test TypeScript code
+#     runs-on: "windows-latest"
+  # test2:
+  # build:
+  #   runs-on: "ubuntu-latest"
+  # package:
+  #   runs-on: "windows-latest"
+    # steps:
+      # uses: foo/bar #--> github action
+      # run: docker ps #--> shell script
+      # uses: ./.github/actions/pai
+      # run: git rm
+
+name: Test workflows
+run-name: Triggering test by ${{ github.actor }}
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    name: Test TypeScript code
+    runs-on: "windows-latest"
+    steps:
+      - uses: actions/checkout@v3 #checkout push main
+      - uses: actions/setup-node@v3 #install npm in ubuntu
+      - run: npm i
+      run npx jest
