@@ -20,16 +20,16 @@
 #   test:
 #     name: Test TypeScript code
 #     runs-on: "windows-latest"
-  # test2:
-  # build:
-  #   runs-on: "ubuntu-latest"
-  # package:
-  #   runs-on: "windows-latest"
-    # steps:
-      # uses: foo/bar #--> github action
-      # run: docker ps #--> shell script
-      # uses: ./.github/actions/pai
-      # run: git rm
+# test2:
+# build:
+#   runs-on: "ubuntu-latest"
+# package:
+#   runs-on: "windows-latest"
+# steps:
+# uses: foo/bar #--> github action
+# run: docker ps #--> shell script
+# uses: ./.github/actions/pai
+# run: git rm
 
 name: Test workflows
 run-name: Triggering test by ${{ github.actor }}
@@ -48,4 +48,4 @@ jobs:
       - uses: actions/checkout@v3 #checkout push main
       - uses: actions/setup-node@v3 #install npm in ubuntu
       - run: npm i
-      run npx jest
+      - run: npx jest
